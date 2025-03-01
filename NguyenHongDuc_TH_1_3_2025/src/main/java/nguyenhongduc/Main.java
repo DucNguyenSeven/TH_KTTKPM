@@ -57,15 +57,30 @@ public class Main {
 //        t5.start();
 //        t6.start();
 
-        // Demo Bill Pugh Singleton
-        System.out.println("\nChecking Bill Pugh Singleton in Multi-threading\n");
+//        // Demo Bill Pugh Singleton
+//        System.out.println("\nChecking Bill Pugh Singleton in Multi-threading\n");
+//
+//        Runnable task = () -> {
+//            BillPughSingleton instance = BillPughSingleton.getInstance();
+//            instance.showMessage();
+//        };
+//
+//        // Tạo và chạy các thread để kiểm tra
+//        Thread thread1 = new Thread(task, "Thread-1");
+//        Thread thread2 = new Thread(task, "Thread-2");
+//        Thread thread3 = new Thread(task, "Thread-3");
+//
+//        thread1.start();
+//        thread2.start();
+//        thread3.start();
+        // Demo Enum Singleton
+        System.out.println("\nChecking Enum Singleton in Multi-threading\n");
 
         Runnable task = () -> {
-            BillPughSingleton instance = BillPughSingleton.getInstance();
+            EnumSingleton instance = EnumSingleton.INSTANCE;
             instance.showMessage();
         };
 
-        // Tạo và chạy các thread để kiểm tra
         Thread thread1 = new Thread(task, "Thread-1");
         Thread thread2 = new Thread(task, "Thread-2");
         Thread thread3 = new Thread(task, "Thread-3");
