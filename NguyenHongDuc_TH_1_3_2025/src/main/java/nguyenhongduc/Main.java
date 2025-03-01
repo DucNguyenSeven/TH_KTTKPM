@@ -1,6 +1,7 @@
 package nguyenhongduc;
 
 import nguyenhongduc.singleton.EagerInitializedSingleton;
+import nguyenhongduc.singleton.LazyInitializedSingleton;
 import nguyenhongduc.singleton.StaticBlockSingleton;
 
 public class Main {
@@ -14,13 +15,21 @@ public class Main {
 //        eagerSingleton1.showMessage();
 //        eagerSingleton2.showMessage();
 
-        // Demo Static Block Initialization Singleton
-        System.out.println("\nDemo Static Block Initialization Singleton\n");
-        StaticBlockSingleton staticSingleton1 = StaticBlockSingleton.getInstance();
-        StaticBlockSingleton staticSingleton2 = StaticBlockSingleton.getInstance();
+//        // Demo Static Block Initialization Singleton
+//        System.out.println("\nDemo Static Block Initialization Singleton\n");
+//        StaticBlockSingleton staticSingleton1 = StaticBlockSingleton.getInstance();
+//        StaticBlockSingleton staticSingleton2 = StaticBlockSingleton.getInstance();
+//
+//        staticSingleton1.showMessage();
+//        staticSingleton2.showMessage();
 
-        staticSingleton1.showMessage();
-        staticSingleton2.showMessage();
+        // Demo Lazy Initialization Singleton
+        System.out.println("\nDemo Lazy Initialization Singleton\n");
+        LazyInitializedSingleton lazySingleton1 = LazyInitializedSingleton.getInstance();
+        LazyInitializedSingleton lazySingleton2 = LazyInitializedSingleton.getInstance();
+
+        lazySingleton1.showMessage();
+        lazySingleton2.showMessage();
 
     }
 }
