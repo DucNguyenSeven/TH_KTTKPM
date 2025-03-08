@@ -1,17 +1,23 @@
 package nguyenhongduc;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import nguyenhongduc.bai01.singleton.DatabaseConnectionSingleton;
+import nguyenhongduc.bai01.factory.Database;
+import nguyenhongduc.bai01.factory.DatabaseFactory;
+
+import java.sql.Connection;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        // 🔹 Singleton: Sử dụng chung một kết nối đến MariaDB
+        System.out.println("\n🟢 Connecting to MariaDB using Singleton...");
+        DatabaseConnectionSingleton dbSingleton = DatabaseConnectionSingleton.getInstance();
+        Connection conn = dbSingleton.getConnection();
+        System.out.println("Database Connection HashCode: " + conn.hashCode());
+
+        // 🔹 Factory: Tạo kết nối MariaDB
+        System.out.println("\n🟢 Creating MariaDB Database using Factory...");
+        Database mariadb = DatabaseFactory.getDatabase("mariadb");
+        mariadb.connect();
     }
 }
