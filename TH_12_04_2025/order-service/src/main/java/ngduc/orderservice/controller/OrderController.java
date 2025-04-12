@@ -1,5 +1,6 @@
 package ngduc.orderservice.controller;
 
+import ngduc.orderservice.dto.OrderResponse;
 import ngduc.orderservice.model.Order;
 import ngduc.orderservice.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class OrderController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Order>> getAll() {
+    public ResponseEntity<List<OrderResponse>> getAll() {
         return ResponseEntity.ok(service.getAll());
     }
 

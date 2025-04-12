@@ -1,4 +1,4 @@
-package ngduc.orderservice.model;
+package ngduc.customerservice.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -10,12 +10,15 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Order {
+public class Customer {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long productId;
-    private int quantity;
+    private String fullName;
+    private String email;
+    private String phone;
+    private String address;
     private LocalDateTime createdAt;
 }

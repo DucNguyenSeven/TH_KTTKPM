@@ -1,21 +1,18 @@
-package ngduc.orderservice.model;
+package ngduc.orderservice.dto;
 
-import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
-public class Order {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class OrderResponse {
     private Long id;
-
     private Long productId;
     private int quantity;
     private LocalDateTime createdAt;
+    private ProductDTO productDetail;
+    private double totalAmount;
 }
