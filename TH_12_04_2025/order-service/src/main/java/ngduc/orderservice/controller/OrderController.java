@@ -1,7 +1,6 @@
 package ngduc.orderservice.controller;
 
-import ngduc.orderservice.dto.OrderResponse;
-import ngduc.orderservice.model.Order;
+import ngduc.orderservice.dto.*;
 import ngduc.orderservice.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,31 +13,26 @@ import java.util.List;
 public class OrderController {
 
     @Autowired
-    private OrderService service;
+    private OrderService orderService;
 
     @PostMapping
-    public ResponseEntity<Order> create(@RequestBody Order order) {
-        return ResponseEntity.ok(service.save(order));
+    public ResponseEntity<OrderResponse> create(@RequestBody CreateOrderRequest request) {
+        return ResponseEntity.ok(orderService.placeOrder(request));
     }
 
     @GetMapping
     public ResponseEntity<List<OrderResponse>> getAll() {
-        return ResponseEntity.ok(service.getAll());
+        return ResponseEntity.ok(orderService.getAllOrders());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Order> getOne(@PathVariable Long id) {
-        return ResponseEntity.ok(service.getById(id));
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Order> update(@PathVariable Long id, @RequestBody Order order) {
-        return ResponseEntity.ok(service.update(id, order));
+    public ResponseEntity<OrderResponse> getOne(@PathVariable Long id) {
+        return ResponseEntity.ok(orderService.getOrderDetail(id));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
-        service.delete(id);
+        orderService.delete(id);
         return ResponseEntity.noContent().build();
     }
 }

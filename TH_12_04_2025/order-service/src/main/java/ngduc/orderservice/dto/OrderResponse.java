@@ -3,16 +3,16 @@ package ngduc.orderservice.dto;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class OrderResponse {
-    private Long id;
-    private Long productId;
-    private int quantity;
-    private LocalDateTime createdAt;
-    private ProductDTO productDetail;
+    private Long orderId;
+    private CustomerDTO customer;
+    private List<OrderItemDTO> products;
     private double totalAmount;
+    private LocalDateTime createdAt;
 }
