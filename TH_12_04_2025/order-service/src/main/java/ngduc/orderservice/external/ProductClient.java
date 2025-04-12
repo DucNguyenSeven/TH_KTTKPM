@@ -9,6 +9,10 @@ public class ProductClient {
     private final RestTemplate restTemplate = new RestTemplate();
 
     public ProductDTO getProductById(Long id) {
-        return restTemplate.getForObject("http://localhost:8081/products/" + id, ProductDTO.class);
+        try {
+            return restTemplate.getForObject("http://localhost:8081/products/" + id, ProductDTO.class);
+        } catch (Exception e) {
+            throw new RuntimeException("Product with id " + id + " not found");
+        }
     }
 }

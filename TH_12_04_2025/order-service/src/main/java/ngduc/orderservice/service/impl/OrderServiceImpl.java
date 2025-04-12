@@ -69,10 +69,15 @@ public class OrderServiceImpl implements OrderService {
             double total = 0;
 
             for (OrderItem item : order.getItems()) {
-                ProductDTO product = productClient.getProductById(item.getProductId());
-                double itemTotal = product.getPrice() * item.getQuantity();
-                itemDTOs.add(new OrderItemDTO(product, item.getQuantity(), itemTotal));
-                total += itemTotal;
+                try {
+                    ProductDTO product = productClient.getProductById(item.getProductId());
+                    double itemTotal = product.getPrice() * item.getQuantity();
+                    itemDTOs.add(new OrderItemDTO(product, item.getQuantity(), itemTotal));
+                    total += itemTotal;
+                } catch (RuntimeException e) {
+                    // Log và bỏ qua sản phẩm lỗi
+                    System.err.println("Product not found for ID: " + item.getProductId());
+                }
             }
 
             OrderResponse response = OrderResponse.builder()
