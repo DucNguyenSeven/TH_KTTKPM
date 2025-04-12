@@ -9,6 +9,11 @@ public class CustomerClient {
     private final RestTemplate restTemplate = new RestTemplate();
 
     public CustomerDTO getCustomerById(Long id) {
-        return restTemplate.getForObject("http://localhost:8083/customers/" + id, CustomerDTO.class);
+        try {
+            return restTemplate.getForObject("http://localhost:8083/customers/" + id, CustomerDTO.class);
+        } catch (Exception e) {
+            System.err.println("Failed to fetch customer with ID " + id + ": " + e.getMessage());
+            return null;
+        }
     }
 }
