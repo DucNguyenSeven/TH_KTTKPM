@@ -15,8 +15,13 @@ public class TestController {
         this.serviceBClient = serviceBClient;
     }
 
-    @GetMapping("/call-b")
-    public String callServiceB() {
-        return serviceBClient.callServiceB();
+    @GetMapping("/call-b-cb")
+    public String callServiceBCB() {
+        return serviceBClient.callServiceWithCircuitBreakerOnly();
+    }
+
+    @GetMapping("/call-b-retry")
+    public String callServiceBRetry() {
+        return serviceBClient.callServiceWithRetryOnly();
     }
 }
